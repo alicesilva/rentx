@@ -1,13 +1,18 @@
-import { Category } from "../../entities/Category";
-import { CategoriesRepository } from "../../repositories/implementations/CategoriesRepository";
+import { inject, injectable } from "tsyringe";
 
+import { Category } from "../../infra/typeorm/entities/Category";
+import { CategoriesRepository } from "../../infra/typeorm/repositories/CategoriesRepository";
+
+@injectable()
 class ListCategoriesService {
-  constructor(private listCategoryRepository: CategoriesRepository) {
-    // nada
-  }
+  constructor(
+    @inject("CategoriesRepository")
+    private listCategoryRepository: CategoriesRepository
+  ) {}
 
-  execute(): Category[] {
-    return this.listCategoryRepository.list();
+  async execute(): Promise<Category[]> {
+    const categories = await this.listCategoryRepository.list();
+    return categories;
   }
 }
 
