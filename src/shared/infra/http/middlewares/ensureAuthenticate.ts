@@ -5,7 +5,7 @@ import { UsersRepository } from "../../../../modules/accounts/infra/typeorm/repo
 import { AppError } from "../../../errors/AppError";
 
 interface IPayload {
-  user_id: string;
+  sub: string;
 }
 export async function ensureAuthentication(
   request: Request,
@@ -21,7 +21,7 @@ export async function ensureAuthentication(
   const [, token] = authHeader.split(" ");
 
   try {
-    const { user_id } = verify(
+    const { sub: user_id } = verify(
       token,
       "b37991e35f2a78657b1502fbdd41ca90"
     ) as IPayload;
