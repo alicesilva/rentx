@@ -3,7 +3,7 @@ import { container } from "tsyringe";
 import { UsersRepository } from "../../modules/accounts/infra/typeorm/repositories/UsersRepository";
 import { UsersTokensRepository } from "../../modules/accounts/infra/typeorm/repositories/UsersTokensRepository";
 import { IUsersRepository } from "../../modules/accounts/repositories/IUsersRepository";
-import { IUsersTokensREpository } from "../../modules/accounts/repositories/IUsersTokensRepository";
+import { IUsersTokensRepository } from "../../modules/accounts/repositories/IUsersTokensRepository";
 import { CarsImageRepository } from "../../modules/cars/infra/typeorm/repositories/CarsImageRepository";
 import { CarsRepository } from "../../modules/cars/infra/typeorm/repositories/CarsRepository";
 import { CategoriesRepository } from "../../modules/cars/infra/typeorm/repositories/CategoriesRepository";
@@ -44,7 +44,7 @@ container.registerSingleton<IRentalsRepository>(
   RentalsRepository
 );
 
-container.registerSingleton<IUsersTokensREpository>(
+container.registerSingleton<IUsersTokensRepository>(
   "UsersTokensRepository",
   UsersTokensRepository
 );

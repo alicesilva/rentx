@@ -4,7 +4,7 @@ import { inject, injectable } from "tsyringe";
 import auth from "../../../../config/auth";
 import { IDateProvider } from "../../../../shared/container/provider/DateProvider/IDateProvider";
 import { AppError } from "../../../../shared/errors/AppError";
-import { IUsersTokensREpository } from "../../repositories/IUsersTokensRepository";
+import { IUsersTokensRepository } from "../../repositories/IUsersTokensRepository";
 
 interface IPayload {
   sub: string;
@@ -14,7 +14,7 @@ interface IPayload {
 class RefreshTokenService {
   constructor(
     @inject("UsersTokensRepository")
-    private usersTokensRepository: IUsersTokensREpository,
+    private usersTokensRepository: IUsersTokensRepository,
     @inject("DayjsDateProvider")
     private dayjsDateProvider: IDateProvider
   ) {}
